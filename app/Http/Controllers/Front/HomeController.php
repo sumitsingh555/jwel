@@ -13,9 +13,9 @@ class HomeController extends Controller
 {
     function index(){
         $colour =  Color::all();
-        $purity =  Purity::all();
+        $purity =  Purity::all(); 
         $category   = Categorie::all();
         $Product = Product::all();
-        return  view('frontend/index',compact('colour','purity','category','Product'));
+        return  view('front/zairito',compact('colour','purity','category','Product'));
     }
 }

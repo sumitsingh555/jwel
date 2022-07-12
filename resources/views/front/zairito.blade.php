@@ -85,7 +85,7 @@
 <section class="upload-design-section my-5">
   <div class="container-fluid section-img-wrapper">
    <div class="row mx-0 p-4 justify-content-end">
-    <div class="col-12 col-lg-6 col-xl-5 px-0">
+    <div class="col-12 col-lg-6 px-0">
      <div class="nav-pills-wrapper rounded-10 overflow-hidden">
      <div class="design-form-tab p-3 pb-0">
       <ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
@@ -99,18 +99,18 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
           <div class="row justify-content-center py-4">
-            <div class="col-8 col-md-5">
+            <div class="col-8 col-xl-5 col-md-4">
               <div class="p-0">
                 <div class="border border-white rounded p-3">
-                  <div class="overflow-hidden"><img class="w-100" src="public/mainwebsite/assets/img/home/dummy_img.jpg" alt="" id="output"></div>
+                  <div class="overflow-hidden"><img class="w-100" src="public/mainwebsite/assets/img/home/dummy_img.jpg" alt="" id="output" style="height: 250px !important;"></div>
                 </div>
                 <form class="text-center mt-2" action="" id="orderdata"  enctype='multipart/form-data'  method="POST">
-                  <label class="btn btn-theme1 text-white w-100 fs-14" for="file">Upload Image (Max 5mb)</label>
+                  <label class="btn btn-theme1 text-white w-100 fs-14" for="file" >Upload Image (Max 5mb)</label>
                   <input class="d-none" type="file" name="image" id="file" onchange="loadFile(event)">
                 
               </div>
             </div>
-            <div class="col-12 col-md-7 mt-3 mt-md-0">
+            <div class="col-12 col-xl-7 col-md-8 mt-3 mt-md-0">
               <div class="row align-items-center">
                 <div class="col-6">
                   <div class="d-flex align-items-center">
@@ -895,3 +895,9 @@
         <script src="{{asset('frontend/assets/js/pages/home.js')}}"></script>
     @endpush()
 @endsection
+<script>
+    var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>

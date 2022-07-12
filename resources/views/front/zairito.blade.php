@@ -82,7 +82,283 @@
         </div>
     </div>
     <!-- Popular Categories area end here  --> 
-
+<section class="upload-design-section my-5">
+  <div class="container-fluid section-img-wrapper">
+   <div class="row mx-0 p-4 justify-content-end">
+    <div class="col-12 col-lg-6 px-0">
+     <div class="nav-pills-wrapper rounded-10 overflow-hidden">
+     <div class="design-form-tab p-3 pb-0">
+      <ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item w-49 me-3 me-sm-0" role="presentation">
+          <button class="nav-link w-100 fs-14 text-white  active" id="pills-upload-tab" data-bs-toggle="pill" data-bs-target="#pills-upload" type="button" role="tab" aria-controls="pills-upload" aria-selected="true">UPLOAD YOUR DESIGN</button>
+        </li>
+        <li class="nav-item w-49" role="presentation">
+          <button class="nav-link w-100 fs-14 text-white" id="pills-candere-tab" data-bs-toggle="pill" data-bs-target="#pills-candere" type="button" role="tab" aria-controls="pills-candere" aria-selected="false">CANDERE DESIGN</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
+          <div class="row justify-content-center py-4">
+            <div class="col-8 col-xl-5 col-md-4">
+              <div class="p-0">
+                <div class="border border-white rounded p-3">
+                  <div class="overflow-hidden"><img class="w-100" src="public/mainwebsite/assets/img/home/dummy_img.jpg" alt="" id="output" style="height: 250px !important;"></div>
+                </div>
+                <form class="text-center mt-2" action="" id="orderdata"  enctype='multipart/form-data'  method="POST">
+                  <label class="btn btn-theme1 text-white w-100 fs-14" for="file" >Upload Image (Max 5mb)</label>
+                  <input class="d-none" type="file" name="image" id="file" onchange="loadFile(event)">
+                
+              </div>
+            </div>
+            <div class="col-12 col-xl-7 col-md-8 mt-3 mt-md-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/diamond-icon.png" alt=""></span>
+                    <span class="fs-14">Diamond Clarity</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="diamond">
+                    <option class="text-dark" selected disabled>Please Select</option>
+                    <option class="text-dark" value="1">One</option>
+                    <option class="text-dark" value="2">Two</option>
+                    <option class="text-dark" value="3">Three</option>
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase" id="diamond"></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/gold1.png" alt=""></span>
+                    <span class="fs-14">Gold Colour</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="colour">
+                    <option class="text-dark" selected disabled>Please Select</option>
+                    @foreach($colour as $key => $value)
+                    <option class="text-dark" value="{{$value->id}}">{{$value->Name}}</option>
+                    @endforeach
+                    
+                 
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase" id="colour"></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/gold2.png" alt=""></span>
+                    <span class="fs-14">Gold Purity</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="purity">
+                    <option class="text-dark" selected disabled>Please Select</option>
+                    @foreach($purity as $key => $value)
+                    
+                    <option class="text-dark" value="{{$value->id}}">{{$value->Purity}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase" id="purity"></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/rupees.png" alt=""></span>
+                    <span class="fs-14">Your Budget</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control border-white bg-transparent shadow-none fs-14 text-white" placeholder="Your Budget" name="budget">
+                 
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase" id="budget"></span>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <textarea class="form-control bg-transparent text-white fs-14 shadow-none" placeholder="Description" id="floatingTextarea2" style="height: 80px" name="Description"></textarea>
+                </div>
+              </div>
+              <div class="text-end">
+              <button class="btn next-btn btn-theme1 shadow-none px-3 text-white fs-14 mt-3"  onclick="myfunction()">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+        <div class="tab-pane fade" id="pills-candere" role="tabpanel" aria-labelledby="pills-candere-tab">
+          <div class="row justify-content-center py-4">
+            <div class="col-8 col-md-5">
+              <div class="p-0">
+                <div class="border border-white rounded p-3">
+                  <div class="overflow-hidden produtimg"><img class="w-100" src="public/mainwebsite/assets/img/home/dummy_img.jpg" alt=""></div>
+                </div>
+                <form class="text-center mt-2" action="" id="form2">
+                  <input class="form-control fs-14 shadow-none text-white border-white bg-transparent" type="text" id="searchsku" name="skunumber" placeholder="Candere SKU">
+                  <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase skunumber" ></span>
+                  <a class="btn btn-theme1 mt-2 w-100 text-white fs-14" onclick="searchsku()">Find Image</a>
+               
+              </div>
+            </div>
+            <div class="col-12 col-md-7 mt-3 mt-md-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/diamond-icon.png" alt=""></span>
+                    <span class="fs-14">Diamond Clarity</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white " aria-label="Default select example" name="diamond">
+                    <option class="text-dark" selected disabled >Please Select</option>
+                    <option class="text-dark" value="1">One</option>
+                    <option class="text-dark" value="2">Two</option>
+                    <option class="text-dark" value="3">Three</option>
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase diamond" ></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/gold1.png" alt=""></span>
+                    <span class="fs-14">Gold Colour</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example"  name="colour">
+                    <option class="text-dark" selected disabled>Please Select</option>
+                    @foreach($colour as $key => $value)
+                    <option class="text-dark" value="{{$value->id}}">{{$value->Name}}</option>
+                    @endforeach
+                  </select>
+                 
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase colour" ></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/gold2.png" alt=""></span>
+                    <span class="fs-14">Gold Purity</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" name="purity" aria-label="Default select example">
+                    <option class="text-dark" selected disabled>Please Select</option>
+                    @foreach($purity as $key => $value)
+                    <option class="text-dark" value="{{$value->id}}">{{$value->id}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase purity" ></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/rupees.png" alt=""></span>
+                    <span class="fs-14">Your Budget</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control border-white bg-transparent shadow-none fs-14 text-white"  name="budget" placeholder="Your Budget">
+                
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase budget"></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/category.png" alt=""></span>
+                    <span class="fs-14">Category</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="category" id="selectcategory" onchange="mycategory()">
+                    <option class="text-dark" selected disabled >Please Select</option>
+                    @foreach($category as $key => $value)
+                    <option class="text-dark" value="{{$value->id}}">{{$value->en_Category_Name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase category" id="category"></span>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <span><img class="me-1" src="public/mainwebsite/assets/img/home/category.png" alt=""></span>
+                    <span class="fs-14">Subcategory</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="subcategory" id="subcat">
+                    <option class="text-dark" selected disabled >Please Select</option>
+                  </select>
+                </div>
+                <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase subcategory" id="subcategory"></span>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <textarea class="form-control bg-transparent text-white fs-14 shadow-none" placeholder="Description" id="floatingTextarea2" style="height: 80px" name="Description"></textarea>
+                </div>
+              </div>
+              <div class="text-end">
+                <button class="btn next-btn btn-theme1 shadow-none px-3 text-white fs-14 mt-3" onclick="form2()">Next</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+     </div>
+     <div class="contact-form-tab d-none">
+      <div class="text-center text-white fs-14 p-2 contact-heading">YOUR CONTACT DETAILS</div>
+      <div class="p-3">
+        <form class="row" action="" id="finaldata">
+          <div class="col-6 my-2">
+            <input class="form-control shadow-none bg-transparent text-white border-white fs-14" type="text" placeholder="First Name" name="fname" >
+            <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase " id="fname"></span>
+          </div>
+         
+          <div class="col-6 my-2">
+            <input class="form-control shadow-none bg-transparent text-white border-white fs-14" type="text" placeholder="Last Name"  name="lname">
+            <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase " id="lname"></span>
+          </div>
+          <div class="col-6 my-2">
+            <input class="form-control shadow-none bg-transparent text-white border-white fs-14" type="text" placeholder="Email"  name="email">
+            <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase " id="email"></span>
+          </div>
+          <div class="col-6 my-2">
+            <input class="form-control shadow-none bg-transparent text-white border-white fs-14" type="text" placeholder="Mobile Number"  name="phone">
+            <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase " id="phone" ></span>
+          </div>
+          <div class="col-12 my-2">
+            <input class="form-control shadow-none bg-transparent text-white border-white fs-14 " type="text" placeholder="Address"  name="address">
+            <span class="text-danger fs-12 fw-bold text-center d-block pt-3 text-uppercase " id="address"></span>
+          </div>
+        
+          <div class="col-12 my-2">
+          <button class="btn btn-theme1 w-100 text-white" onclick="mydata()" >Submit</button>
+          </div>
+         </form>
+         <div class="text-center fs-14 mt-3">
+          <p class="mb-2">IN CASE OF ANY QUERIES CALL US ON</p>
+          <p class="mb-2">+91 22 61066262</p>
+          <p class="mb-2">OR</p>
+          <P class="mb-2">Whatsapp Us!</P>
+          <P class="mb-2">+91 9920024599</P>
+         </div>
+      </div>
+     </div>
+     </div>
+    </div>
+   </div>
+  </div>
+</section>
     <!-- Featured Products area start here  -->
     <div class="featured-productss-area section-top pb-100">
         <div class="container">
@@ -619,3 +895,9 @@
         <script src="{{asset('frontend/assets/js/pages/home.js')}}"></script>
     @endpush()
 @endsection
+<script>
+    var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>

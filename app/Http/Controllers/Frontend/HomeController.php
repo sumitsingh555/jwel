@@ -15,6 +15,10 @@ use App\Models\Language;
 use App\Models\SeoSetting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use App\Models\Front\Color;
+use App\Models\Front\Purity;
+use App\Models\Front\Categorie;
+// use App\Models\Front\Product;
 
 class HomeController extends Controller
 {
@@ -41,6 +45,10 @@ class HomeController extends Controller
             $data['title'] = $seo->title;
             $data['description'] = $seo->description;
             $data['keywords'] = $seo->keywords;
+            $data['colour'] =  Color::all();
+            $data['purity'] =  Purity::all(); 
+            $data['category']   = Categorie::all();
+            $Product = Product::all();
             return view('front.zairito', $data);
         }
         else {

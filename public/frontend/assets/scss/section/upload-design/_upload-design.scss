@@ -1,0 +1,116 @@
+
+.upload-design-section{
+    min-height: 385px;
+    width: 100%;
+    & .section-img-wrapper{
+      background-image: url(../images/bg-img2.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: transparent;
+      background-position: center center;
+      height: 100%;
+      width: 100%;
+      margin: 0px 0px;
+      padding: 0px;
+      position: relative;
+      background-attachment: fixed;
+      color: #fff;
+      & .nav-pills-wrapper{
+        background: rgb(68 68 68 / 50%);
+        backdrop-filter: blur(2.5px);
+        & .nav-pills{
+             & .nav-item{
+              & .nav-link{
+                background: rgba(0, 0, 0, .5);
+                &.active{
+                  background: blue !important;
+                }
+              }
+             }
+        }
+        &.next-step{
+          & .design-form-tab{
+            display: none !important;
+          }
+          & .contact-form-tab{
+            display: block !important;
+          }
+        }
+      }
+    }
+    & .contact-form-tab{
+      & .contact-heading{
+        background: rgba(0, 0, 0, .5);
+      }
+    }
+    & input, & textarea{
+     &::placeholder{
+          color: white !important;
+      }
+    }
+    & select{
+      background-image: url(../../../img/home/frame.png) !important;
+      background-size: 13px 12px !important;
+    }
+  }
+  // upload-design****
+  // Small devices (landscape phones, 576px and up)
+  @mixin upload-design-mixin-min-sm() {
+  
+  }
+  // Medium devices (tablets, 768px and up)
+  @mixin upload-design-mixin-min-md() {
+  
+  }
+  
+  // Large devices (desktops, 992px and up)
+  @mixin upload-design-mixin-min-lg() {
+  
+  }
+  
+  // X-Large devices (large desktops, 1200px and up)
+  @mixin upload-design-mixin-min-xl() {
+  
+  }
+  
+  // XX-Large devices (larger desktops, 1400px and up)
+  @mixin upload-design-mixin-min-xxl() {
+  
+  }
+  
+  // X-Small devices (portrait phones, less than 576px)
+  @mixin upload-design-mixin-max-xs() {
+    .upload-design-section{
+      & .nav-pills{
+        overflow-y: auto;
+        flex-wrap: nowrap !important;
+        &::-webkit-scrollbar{
+          display: none;
+        }
+        & .nav-item{
+          flex: 0 0 200px;
+        }
+      }
+    }
+  }
+  
+  // Small devices (landscape phones, less than 768px)
+  @mixin upload-design-mixin-max-sm() {
+  
+  }
+  
+  // Medium devices (tablets, less than 992px)
+  @mixin upload-design-mixin-max-md() {
+      
+  }
+  
+  // Large devices (desktops, less than 1200px)
+  @mixin upload-design-mixin-max-lg() {
+  
+  }
+  
+  // X-Large devices (large desktops, less than 1400px)
+  @mixin upload-design-mixin-max-xl() {
+  
+  }
+  

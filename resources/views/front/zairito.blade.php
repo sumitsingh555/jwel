@@ -158,8 +158,7 @@
                   <select class="form-select fs-14 shadow-none bg-transparent text-white" aria-label="Default select example" name="purity">
                     <option class="text-dark" selected disabled>Please Select</option>
                     @foreach($purity as $key => $value)
-                    
-                    <option class="text-dark" value="{{$value->id}}">{{$value->Purity}}</option>
+                    <option class="text-dark" value="{{$value->id}}">{{$value->purity}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -895,3 +894,181 @@
         <script src="{{asset('frontend/assets/js/pages/home.js')}}"></script>
     @endpush()
 @endsection
+<script>
+    function myfunction(){
+        event.preventDefault(); 
+        $('.text-danger').html(''); 
+        let formData =  new FormData($('#orderdata')[0]);
+            $.ajax({
+                url:"{{route('designdata')}}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                data:formData,
+                dataType: 'json',
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    // location.reload();
+                    $(".nav-pills-wrapper").toggleClass("next-step");
+                 
+                },
+                error:function(data){
+                    
+                    const obj = JSON.parse(data.responseText);
+                    $.each(obj.errors, function(index, value) {
+                      // console.log(index);
+                        // document.getElementById( index ).innerHTML =  value[0];
+                        $(`#${index}`).html(value[0]);
+                    });
+                }
+  
+            });
+        
+    }
+  
+    function mydata(){
+        event.preventDefault(); 
+        $('.text-danger').html(''); 
+                var formData = new FormData(document.forms['finaldata']); // with the file input
+                console.log(formData);
+                var poData = jQuery(document.forms['orderdata']).serializeArray();
+                for (var i=0; i<poData.length; i++)
+                    formData.append(poData[i].name, poData[i].value);
+                var povalue = jQuery(document.forms['form2']).serializeArray();
+                for (var i=0; i<povalue.length; i++)
+                    formData.append(povalue[i].name, povalue[i].value);
+            $.ajax({
+                url:"{{route('designvalue')}}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                data:formData,
+                dataType: 'json',
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    location.reload();
+                    // $(".nav-pills-wrapper").toggleClass("next-step");
+                 
+                },
+                error:function(data){
+                    
+                    const obj = JSON.parse(data.responseText);
+                    $.each(obj.errors, function(index, value) {
+                      // console.log(index);
+                        // document.getElementById( index ).innerHTML =  value[0];
+                        $(`#${index}`).html(value[0]);
+                    });
+                }
+  
+            });
+        
+    }
+  
+    function mycategory(){
+      $('.text-danger').html(''); 
+      var data = $('#selectcategory').val();
+      $.ajax({
+                url:"{{route('selectcategory')}}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                data:{
+                   data:data,
+                },
+                dataType: 'json',
+                cache:false,
+                // contentType: false,
+                // processData: false,
+                success:function(data){
+                  console.log(data);
+                  $.each(data,function(index ,value){
+                    console.log(value.id);
+                          $('#subcat').append (`<option class="text-dark" value="`+value.id+`">`+value.en_Subcategory_Name+`</option>`)
+  
+                  });
+                 
+                },
+  
+            });
+    }
+  
+    function form2(){
+  
+      event.preventDefault(); 
+      $('.text-danger').html(''); 
+        let formData =  new FormData($('#form2')[0]);
+  
+            $.ajax({
+                url:"{{route('form2data')}}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                data:formData,
+                dataType: 'json',
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    // location.reload();
+                    $(".nav-pills-wrapper").toggleClass("next-step");
+                 
+                },
+                error:function(data){
+                    
+                    const obj = JSON.parse(data.responseText);
+                    $.each(obj.errors, function(index, value) {
+                      // console.log(index);
+                        // document.getElementById( index ).innerHTML =  value[0];
+                        $(`.${index}`).html(value[0]);
+                    });
+                }
+  
+            });
+     
+    }
+    
+    function searchsku(){
+  
+      event.preventDefault(); 
+      $('.text-danger').html(''); 
+      console.log($('#searchsku').val() );
+        var skunumber =  $('#searchsku').val();
+            $.ajax({
+                url:"{{route('searchsku')}}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                data:{skunumber:skunumber,},
+                dataType: 'json',
+                cache:false,
+              //   contentType: false,
+              //   processData: false,
+                success:function(data){
+                    // location.reload();
+                    $('.produtimg').empty();
+                   $('.produtimg').html('<img class="w-100" src="https://photostock.sarkarimaster.in/public/mainwebsite/assets/img/home/1.jpg" alt="">');
+                 
+                },
+                error:function(data){
+                    
+                    const obj = JSON.parse(data.responseText);
+                    $.each(obj.errors, function(index, value) {
+                      // console.log(index);
+                        // document.getElementById( index ).innerHTML =  value[0];
+                        $(`.${index}`).html(value[0]);
+                    });
+                }
+  
+            });
+     
+    }
+  </script>

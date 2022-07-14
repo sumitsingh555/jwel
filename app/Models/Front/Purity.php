@@ -9,5 +9,5 @@ class Purity extends Model
 {
     use HasFactory;
 
-    protected $table = 'purities';
+    protected $table = 'purity';
 }

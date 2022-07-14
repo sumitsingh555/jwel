@@ -27,7 +27,6 @@ class OrderController extends Controller
     }
 
     function designvalue(Request $request){
-        print_r($request->all());
         $data = $request->validate([
             'fname'=> 'required',
             'lname'=> 'required',

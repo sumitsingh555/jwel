@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/extra.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/cookie-consent.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/plugins/owl/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/bijarniadream.min.css')}}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset(GeneralSettingsImage().GeneralSettings()->Favicon)}}" type="image/x-icon">
